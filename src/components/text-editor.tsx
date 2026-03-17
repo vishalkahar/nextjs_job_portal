@@ -146,7 +146,7 @@ const ToolBar = ({ editor }: { editor: Editor }) => {
       return {
         isBold: ctx.editor.isActive("bold") ?? false,
         isItalic: ctx.editor.isActive("italic") ?? false,
-        iamThapa: ctx.editor.isActive("underline") ?? false,
+        iam: ctx.editor.isActive("underline") ?? false,
         isStrike: ctx.editor.isActive("strike") ?? false,
         isCode: ctx.editor.isActive("code") ?? false,
         isHighlight: ctx.editor.isActive("highlight") ?? false,
@@ -236,7 +236,7 @@ const ToolBar = ({ editor }: { editor: Editor }) => {
 
       <Toggle
         size="sm"
-        pressed={editorState.iamThapa}
+        pressed={editorState.iam}
         onPressedChange={() => editor.chain().focus().toggleUnderline().run()}
         aria-label="Toggle underline"
       >
@@ -312,8 +312,10 @@ const ToolBar = ({ editor }: { editor: Editor }) => {
         </Toggle>
       ) : (
         <LinkComponent editor={editor}>
-          <Toggle size="sm" aria-label="Toggle link">
-            <LinkIcon className="h-4 w-4" />
+          <Toggle size="sm" aria-label="Toggle link" asChild>
+            <span>
+              <LinkIcon className="h-4 w-4" />
+            </span>
           </Toggle>
         </LinkComponent>
       )}
@@ -468,8 +470,10 @@ export function BubbleMenu({ editor }: { editor: Editor }) {
         </Toggle>
       ) : (
         <LinkComponent editor={editor}>
-          <Toggle size="sm" aria-label="Toggle link">
-            <LinkIcon className="h-4 w-4" />
+          <Toggle size="sm" aria-label="Toggle link" asChild>
+            <span>
+              <LinkIcon className="h-4 w-4" />
+            </span>
           </Toggle>
         </LinkComponent>
       )}
@@ -598,8 +602,10 @@ export function FloatingMenu({ editor }: { editor: Editor }) {
         </Toggle>
       ) : (
         <LinkComponent editor={editor}>
-          <Toggle size="sm" aria-label="Toggle link">
-            <LinkIcon className="h-4 w-4" />
+          <Toggle size="sm" aria-label="Toggle link" asChild>
+            <span>
+              <LinkIcon className="h-4 w-4" />
+            </span>
           </Toggle>
         </LinkComponent>
       )}

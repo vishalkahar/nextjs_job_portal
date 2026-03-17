@@ -19,7 +19,8 @@ interface EditJobPageProps {
   params: { jobId: string };
 }
 
-const JobsDetailedPage = async ({ params }: EditJobPageProps) => {
+const JobsDetailedPage = async ({ params: paramsPromise }: EditJobPageProps) => {
+  const params = await paramsPromise;
   const jobId = parseInt(params.jobId);
   if (isNaN(jobId)) return notFound();
 

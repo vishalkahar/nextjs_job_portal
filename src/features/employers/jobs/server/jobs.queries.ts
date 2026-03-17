@@ -13,7 +13,7 @@ export interface JobFilterParams {
 }
 
 export async function getAllJobs(filters: JobFilterParams) {
-  console.log("filers real: ", filters);
+  // console.log("filers real: ", filters);
 
   const today = new Date();
   today.setHours(0, 0, 0, 0); // Reset time to 00:00:00
@@ -26,7 +26,7 @@ export async function getAllJobs(filters: JobFilterParams) {
 
   //search
   if (filters?.search) {
-    // 1: react - mern stack react title , react, react thapa
+    // 1: react - mern stack react title , react, react
     // % - wildcard
     // 2: company name, tags, title  - LIKE() - contains
     // 3: OR

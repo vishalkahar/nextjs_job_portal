@@ -4,7 +4,9 @@ const nextConfig: NextConfig = {
   /* config options here */
   images: {
     remotePatterns: [
-      { hostname: "we2plp04mq.ufs.sh", protocol: "https" }],
+      { hostname: "we2plp04mq.ufs.sh", protocol: "https" },
+      { hostname: "y2ywpa5bgq.ufs.sh", protocol: "https" },
+    ],
   },
 };
 
