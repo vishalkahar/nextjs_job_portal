@@ -1,18 +1,29 @@
-import { logoutUserAction } from '@/features/auth/server/auth.actions'
-import { getCurrentUser } from '@/features/auth/server/auth.queries';
-import { redirect } from 'next/navigation';
+import { redirect } from "next/navigation";
+import { getCurrentUser } from "@/features/auth/server/auth.queries";
+import { ApplicantStats } from "@/features/applicants/components/applicant-stats";
+import { ApplicantProfileStatus } from "@/features/applicants/components/applicant-profile-status";
+import { RecentApplications } from "@/features/applicants/components/recent-applications";
 
-const ApplicantDashboard = async () => {
+export default async function ApplicantDashboard() {
     const user = await getCurrentUser();
-
     if (!user) return redirect("/login");
 
     return (
-        <>
-            <div>ApplicantDashboard</div>
-            <button onClick={logoutUserAction}>Logout</button>
-        </>
-    )
-}
+        <div className="space-y-8 p-6 max-w-7xl mx-auto">
+            <div className="flex flex-col gap-1">
+                <h1 className="text-2xl font-bold tracking-tight text-gray-900">
+                    Hello, <span className="capitalize">{user.name}</span>
+                </h1>
+                <p className="text-gray-500">
+                    Here is your daily activities and job alerts
+                </p>
+            </div>
 
-export default ApplicantDashboard
+            <ApplicantStats />
+
+            <ApplicantProfileStatus />
+
+            <RecentApplications />
+        </div>
+    );
+}

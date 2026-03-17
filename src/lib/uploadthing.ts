@@ -1,7 +1,7 @@
 import {
-    generateReactHelpers,
-    generateUploadButton,
-    generateUploadDropzone,
+  generateReactHelpers,
+  generateUploadButton,
+  generateUploadDropzone,
 } from "@uploadthing/react";
 
 import type { OurFileRouter } from "@/app/api/uploadthing/core";
@@ -11,7 +11,7 @@ export const UploadDropzone = generateUploadDropzone<OurFileRouter>();
 
 // to create our own custom image for uploading we need useUploadThing
 export const { useUploadThing, uploadFiles } =
-    generateReactHelpers<OurFileRouter>();
+  generateReactHelpers<OurFileRouter>();
 // Connects your custom UI component to an UploadThing upload endpoint
 
 // This does three important things:

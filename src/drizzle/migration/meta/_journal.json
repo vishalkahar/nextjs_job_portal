@@ -15,6 +15,13 @@
       "when": 1770274709040,
       "tag": "0001_charming_maverick",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1773724487860,
+      "tag": "0002_fixed_supreme_intelligence",
+      "breakpoints": true
     }
   ]
 }

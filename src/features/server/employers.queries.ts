@@ -1,26 +1,57 @@
 import { getCurrentUser } from "../auth/server/auth.queries";
-import { employers } from "../../drizzle/schema";
+import {
+  applicants,
+  employers,
+  jobApplications,
+  jobs,
+  resumes,
+  users,
+} from "../../drizzle/schema";
 import { db } from "@/config/db";
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 
 export const getCurrentEmployerDetails = async () => {
-    const currentUser = await getCurrentUser();
+  const currentUser = await getCurrentUser();
 
-    if (!currentUser) return null;
+  console.log("currentUser: ", currentUser);
 
-    if (currentUser.role !== "employer") return null;
+  if (!currentUser) return null;
 
-    const [employer] = await db
-        .select()
-        .from(employers)
-        .where(eq(employers.id, currentUser.id));
+  if (currentUser.role !== "employer") return null;
 
-    const isProfileCompleted =
-        employer.name &&
-        employer.description &&
-        currentUser.avatarUrl &&
-        employer.organizationType &&
-        employer.yearOfEstablishment;
+  const [employer] = await db
+    .select()
+    .from(employers)
+    .where(eq(employers.id, currentUser.id));
 
-    return { ...currentUser, employerDetails: employer, isProfileCompleted };
+  console.log("employer: ", employer);
+
+  const isProfileCompleted =
+    employer.name &&
+    employer.description &&
+    currentUser.avatarUrl &&
+    employer.organizationType &&
+    employer.yearOfEstablishment;
+
+  return { ...currentUser, employerDetails: employer, isProfileCompleted };
 };
+
+export async function getEmployerApplications(employerId: number) {
+  const applications = await db
+    .select({
+      application: jobApplications,
+      job: jobs,
+      user: users,
+      applicant: applicants,
+      resume: resumes,
+    })
+    .from(jobApplications)
+    .innerJoin(jobs, eq(jobApplications.jobId, jobs.id))
+    .innerJoin(users, eq(jobApplications.applicantId, users.id))
+    .leftJoin(applicants, eq(jobApplications.applicantId, applicants.id))
+    .leftJoin(resumes, eq(jobApplications.resumeId, resumes.id))
+    .where(eq(jobs.employerId, employerId))
+    .orderBy(desc(jobApplications.appliedAt));
+
+  return applications;
+}
