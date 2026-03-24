@@ -31,7 +31,7 @@ const navigationItems = [
 
 const EmployerSidebar = () => {
   const pathname = usePathname();
-  console.log("usepathname: ", pathname);
+  // console.log("usepathname: ", pathname);
 
   // to check the link of the matching sidebar
   function isLinkActive({
@@ -51,9 +51,9 @@ const EmployerSidebar = () => {
       pathname: normalizedHref === base ? base : `${normalizedHref}{/*}?`,
     });
 
-    console.log("pattern: ", pattern);
+    // console.log("pattern: ", pattern);
 
-    console.log("inside: ", pattern.test({ pathname }));
+    // console.log("inside: ", pattern.test({ pathname }));
     return pattern.test({ pathname });
   }
 

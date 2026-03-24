@@ -45,7 +45,7 @@ interface PageProps {
 export default async function JobsPage({ searchParams }: PageProps) {
   const resolvedParams = await searchParams;
 
-  console.log("resolvedParams: ", resolvedParams);
+  // console.log("resolvedParams: ", resolvedParams);
 
   const filters: JobFilterParams = {
     search:
@@ -67,8 +67,7 @@ export default async function JobsPage({ searchParams }: PageProps) {
   };
 
   // 1. Fetch data directly on the server
-  const jobs = await getAllJobs(filters);
-
+  const { jobs } = await getAllJobs(filters);
   return (
     <div className="space-y-6 p-6">
       {/* Page Header */}

@@ -13,7 +13,7 @@ import { desc, eq } from "drizzle-orm";
 export const getCurrentEmployerDetails = async () => {
   const currentUser = await getCurrentUser();
 
-  console.log("currentUser: ", currentUser);
+  // console.log("currentUser: ", currentUser);
 
   if (!currentUser) return null;
 
@@ -24,7 +24,7 @@ export const getCurrentEmployerDetails = async () => {
     .from(employers)
     .where(eq(employers.id, currentUser.id));
 
-  console.log("employer: ", employer);
+  // console.log("employer: ", employer);
 
   const isProfileCompleted =
     employer.name &&

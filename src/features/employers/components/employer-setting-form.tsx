@@ -75,7 +75,7 @@ const EmployerSettingsForm = ({
   // };
 
   const handleFormSubmit = async (data: EmployerProfileData) => {
-    console.log("data: ", data);
+    // console.log("data: ", data);
     const response = await updateEmployerProfileAction(data);
     if (response.status === "SUCCESS") {
       toast.success(response.message);
@@ -156,7 +156,7 @@ const EmployerSettingsForm = ({
                     }
                     className={cn(
                       fieldState.error &&
-                        "ring-1 ring-destructive/50 rounded-lg",
+                      "ring-1 ring-destructive/50 rounded-lg",
                       "h-64 w-64",
                     )}
                   />
@@ -183,7 +183,7 @@ const EmployerSettingsForm = ({
                     }
                     className={cn(
                       fieldState.error &&
-                        "ring-1 ring-destructive/50 rounded-lg",
+                      "ring-1 ring-destructive/50 rounded-lg",
                       "h-64 w-full",
                     )}
                   />

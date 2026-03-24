@@ -32,15 +32,15 @@ function Toggle({
   className,
   variant,
   size,
-  asChild = false,
+  asChild = false, // Add asChild prop with default value false
   ...props
 }: React.ComponentProps<typeof TogglePrimitive.Root> &
   VariantProps<typeof toggleVariants> & { asChild?: boolean }) {
   return (
     <TogglePrimitive.Root
       data-slot="toggle"
+      asChild={asChild} // Pass asChild prop to TogglePrimitive.Root
       className={cn(toggleVariants({ variant, size, className }))}
-      asChild={asChild}
       {...props}
     />
   )

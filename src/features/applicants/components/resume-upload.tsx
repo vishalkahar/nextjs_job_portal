@@ -23,7 +23,7 @@ export const ResumeUpload = ({
 
   const { startUpload } = useUploadThing("pdfUploader", {
     onClientUploadComplete: (res) => {
-      console.log("res pdf: ", res);
+      // console.log("res pdf: ", res);
 
       if (res && res[0]) {
         const file = res[0];

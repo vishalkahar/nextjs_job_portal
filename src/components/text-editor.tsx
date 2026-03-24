@@ -307,8 +307,11 @@ const ToolBar = ({ editor }: { editor: Editor }) => {
           onPressedChange={() =>
             editor.chain().focus().extendMarkRange("link").unsetLink().run()
           }
+          asChild // Ensure Toggle does not render a <button>
         >
-          <UnlinkIcon className="h-4 w-4" />
+          <span>
+            <UnlinkIcon className="h-4 w-4" />
+          </span>
         </Toggle>
       ) : (
         <LinkComponent editor={editor}>
@@ -465,8 +468,11 @@ export function BubbleMenu({ editor }: { editor: Editor }) {
           onPressedChange={() =>
             editor.chain().focus().extendMarkRange("link").unsetLink().run()
           }
+          asChild // Ensure Toggle does not render a <button>
         >
-          <UnlinkIcon className="h-4 w-4" />
+          <span>
+            <UnlinkIcon className="h-4 w-4" />
+          </span>
         </Toggle>
       ) : (
         <LinkComponent editor={editor}>
@@ -597,8 +603,11 @@ export function FloatingMenu({ editor }: { editor: Editor }) {
           onPressedChange={() =>
             editor.chain().focus().extendMarkRange("link").unsetLink().run()
           }
+          asChild // Ensure Toggle does not render a <button>
         >
-          <UnlinkIcon className="h-4 w-4" />
+          <span>
+            <UnlinkIcon className="h-4 w-4" />
+          </span>
         </Toggle>
       ) : (
         <LinkComponent editor={editor}>

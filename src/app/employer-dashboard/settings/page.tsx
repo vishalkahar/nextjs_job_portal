@@ -7,7 +7,7 @@ const EmployerSettings = async () => {
   const employer = await getCurrentEmployerDetails();
   if (!employer) return redirect("/login");
 
-  console.log("currentEmployer: ", employer);
+  // console.log("currentEmployer: ", employer);
 
   return (
     <div>

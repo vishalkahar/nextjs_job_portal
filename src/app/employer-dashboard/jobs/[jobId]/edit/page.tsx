@@ -6,7 +6,8 @@ interface EditJobPageProps {
   params: { jobId: string };
 }
 
-export const EditJobPage = async ({ params }: EditJobPageProps) => {
+export const EditJobPage = async ({ params: paramsPromise }: EditJobPageProps) => {
+  const params = await paramsPromise;
   const jobId = Number(params.jobId);
 
   // if (Number.isNaN(jobId)) {
@@ -17,7 +18,7 @@ export const EditJobPage = async ({ params }: EditJobPageProps) => {
 
   // 1. Fetch Data
   const { status, data: job } = await getJobByIdAction(jobId);
-  console.log("Job Data after ID: ", job);
+  // console.log("Job Data after ID: ", job);
 
   // 2. Handle Errors (e.g., user manually types a random ID)
   if (status === "ERROR" || !job) {

@@ -12,8 +12,8 @@ export const createJobAction = async (data: JobFormData) => {
   try {
     const { success, data: result, error } = jobSchema.safeParse(data);
     if (!success) {
-      console.log("❌ ZOD ERRORS:", error.flatten());
-      console.log("❌ RECEIVED DATA:", data);
+      // console.log("❌ ZOD ERRORS:", error.flatten());
+      // console.log("❌ RECEIVED DATA:", data);
 
       return {
         status: "ERROR",

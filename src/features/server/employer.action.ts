@@ -65,7 +65,7 @@ export const updateEmployerProfileAction = async (
       })
       .where(eq(employers.id, currentUser.id));
 
-    console.log("employers ", updatedEmployer);
+    // console.log("employers ", updatedEmployer);
 
     await db
       .update(users)
